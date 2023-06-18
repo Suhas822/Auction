@@ -1,0 +1,108 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block body %}
+<div class="main-banner">
+    <div class="wrap">
+        <div class="banner-content">
+            <div class="infographic">
+                <figure>
+                    <img src="{% static 'images/infographic.png' %}" alt="Bidderboy">
+                </figure>
+            </div>
+            <!--/.infographic-->
+            <figure class="women-image">
+                <img src="{% static 'images/women.png' %}" alt="Bidderboy">
+            </figure>
+            <!--/.women-image-->
+            <div class="win-big">
+                Win <span>Big</span>
+            </div>
+            <!--/.win-big-->
+            <div class="discount">
+                <span>Why pay retail prices?</span>
+                Up to 89% Discounts Guarantee ! 
+            </div>
+            <!--/.discount-->
+        </div>
+        <!--/.banner-content-->
+
+        <div class="signup-form">
+            <h2>Free Sign Up</h2>
+            <span>
+                Sign-up takes less than 30 seconds. Get 5 Free Credits on Joining.
+            </span>
+
+            
+            <div id="skm_LockPane" class="LockOff">
+            </div>
+            <form action="" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+            <ul class="formlist">
+
+                <li class="fields">
+
+                    <div class="input-box">
+                        <input name="fname" type="text" id="txtFirstName" class="textbox" placeholder="First Name" />
+                    </div>
+                    <div class="input-box">
+                        <input name="lname" type="text" id="txtLastName" class="textbox" placeholder="Last Name" />
+                    </div>
+                </li>
+                <li class="fields">
+                    <div class="input-box">
+                        <input name="uname" type="text" id="txtSUserName" class="textbox" placeholder="Choose Username" />
+                    </div>
+                    <div class="input-box">
+                        <input name="pwd" type="password" id="txtSPassword" class="textbox" placeholder="Choose Password" />
+                    </div>
+                </li>
+                <li class="fields">
+                    <div class="input-box">
+                        <input name="email" type="text" id="txtEmail" class="textbox" placeholder="Email ID" />
+                    </div>
+                    <div class="input-box">
+                        <input name="contact" type="text" maxlength="10" id="txtMobile" class="textbox" placeholder="Mobile" />
+                    </div>
+                </li>
+
+                <li class="fields">
+                    <div class="input-box">
+                        <input name="image" type="file" id="txtEmail" class="form-control" placeholder="Image"/>
+                    </div>
+                    <div class="input-box">
+                        <input name="reg" type="radio" id="txtMobile" class="form-check" value="Bidder"/> Bidder
+                        <input name="reg" type="radio" id="txtMobile" class="form-check-input" value="Seller"/> Seller
+                    </div>
+                </li>
+
+                <li class="fields">
+                    <div class="input-box">
+                        <input name="dob" type="date" id="txtEmail" class="form-control" placeholder="Date of Birth" />
+                    </div>
+                    <div class="input-box">
+                        <textarea name="add" id="txtMobile" class="textbox" placeholder="Address"></textarea>
+                    </div>
+                </li>
+                <li id="dvCaptcha" class="fields">
+                    <div class="g-recaptcha" data-sitekey="6Lfo_noaAAAAAAdgE6uJHEnLQjhPRc1vXEpBy-DU" style="padding: 0 0 0 14px;"></div>
+                </li>
+                <li class="terms">
+                    <label>
+                        <input id="chkChecked" type="checkbox" name="chkChecked" />
+                        I accept the <a href="Terms.html">Terms and Conditions</a> and the <a href="Privacy.html">Privacy Policy</a> of Online Auction
+                    </label>
+                </li>
+                <li class="actions">
+                    <input type="submit" value="Sign Up" class="button btn-sm btn-login" />
+                    
+                </li>
+            </ul>
+        </form>
+        </div>
+        <!--/.signup-form-->
+
+
+    </div>
+</div>
+
+{% endblock %}

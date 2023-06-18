@@ -1,0 +1,41 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block body %}
+<div class="main-banner">
+    <div class="wrap">
+        <div class="banner-content">
+            <div class="container">
+                <h2>Login Now</h2>
+                <span>
+                 Get 5 Free Credits on Joining.
+                </span>
+
+                <form action="" method="post" enctype="multipart/form-data">
+                    {% csrf_token %}
+                <ul class="formlist">
+
+                    <li class="fields">
+                        <div class="input-box" style="width:100%">
+                            <input name="uname" type="text" id="txtSUserName" class="textbox" placeholder="Choose Username" />
+                        </div>
+                    </li>
+                    <li class="fields">
+                        <div class="input-box" style="width:100%">
+                            <input name="pwd" type="password" id="txtSPassword" class="textbox" placeholder="Choose Password" />
+                        </div>
+                    </li>
+    
+                    
+                    <li class="actions">
+                        <input type="submit" value="Login now" class="button btn-sm btn-login" />
+                        
+                    </li>
+                </ul>
+            </form>
+                    
+        </div>
+    </div>
+</div>
+</div>
+
+{% endblock %}

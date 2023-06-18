@@ -1,0 +1,156 @@
+{% extends 'index.html' %}
+{% load static %}
+{% load custom_tags %}
+{% block body %}
+    <div id="main">
+        <div id="primary" class="content-area one-column">
+            <div id="content" class="site-content">
+                <input name="ctl00$Body$lblId" type="text" readonly="readonly" id="Body_lblId" class="lblId" style="display: none;" />
+                
+                <!--/.upcoming-auctions-->
+                <div id="Body_dvSecClose" class="closed-auctions auction-section">
+                    <div class="wrap">
+                        <div class="heading heading-v1">
+                            <h3 style="border-top: none;">All Auctions</h3>
+                        </div>
+                        <div class="cols cols4">
+                            {% for i in product %}
+                                    <div class="col" style="margin-bottom: 10px;">
+                                        <div class="auction-block">
+                                            <h4>
+                                                <a href="/product_detail/{{i.id}}" >{{i.name}}</a></h4>
+                                            <span class="auction-id">Auction ID: {{i.id}}</span>
+                                            {% if i.bid_type == "Auction" %}
+                                            <span>Product price will increase.</span>
+                                            {% else %}
+                                            <span>Product price will decrease.</span>
+                                            {% endif %}
+                                            <figure class="product-image">
+                                                <a href="/product_detail/{{i.id}}"><img src="{{i.images.url}}" style="max-width: 220px;width: auto;max-height: 245px; height: auto;" alt="25 Bidderboy Credits"  /></a>
+                                            </figure>
+                                            <div class="auction-status-row">
+                                                <span class="auction-status">{{i.status}}</span>
+                                                <span class="auction-winner">
+                                                    <span id="Body_lstvClosedProduct_lblUserName_0">{{i.winner}}</span></span>
+                                            </div>
+                                            <!--/.auction-status-row-->
+                                            {% if i.status == "closed" %}
+                                            <div class="bid-action bid-end-price">
+                                                Ended &#8377;<span id="Body_lstvClosedProduct_lblPrice_0">{{i.final_price}}</span>
+                                            </div>
+                                            {% elif i.status == "upcoming" %}
+                                            <div class="bid-action_{{forloop.counter}}">
+                                                <span id="upcoming_time"></span>
+                                                <input type="hidden" id="start_bid_{{forloop.counter}}" value="{% getupcoming i.id i.endsession %}">
+                                                <input type="hidden" id="pro_status_{{forloop.counter}}" value="{{i.status}}">
+                                                <input type="hidden" id="myproid_{{forloop.counter}}" value="{{i.id}}">
+                                            </div>
+                                            {% elif i.status == "live" %}
+                                            <div class="bid-action">
+                                                <span id="live_time_{{forloop.counter}}"></span>
+                                                <input type="hidden" id="start_bid_{{forloop.counter}}" value="{% getupcoming i.id i.endsession %}">
+                                                <input type="hidden" id="pro_status_{{forloop.counter}}" value="{{i.status}}">
+                                                <input type="hidden" id="myproid_{{forloop.counter}}" value="{{i.id}}">
+                                            </div>
+                                            {% endif %}
+                                                <input type="hidden" id="start_bid_{{forloop.counter}}" value="{% getupcoming i.id i.endsession %}">
+                                                <input type="hidden" id="pro_status_{{forloop.counter}}" value="{{i.status}}">
+                                                <input type="hidden" id="myproid_{{forloop.counter}}" value="{{i.id}}">
+                                            <!--/.bid-action-->
+                                            
+                                        </div>
+                                        <!--/.auction-block-->
+                                    </div>
+                                    <!--/.col-->
+                                    {% empty %}
+                                <h1>There is no any auction.</h1>
+                        {% endfor %}
+                                
+                                    
+                                
+
+                            
+                        </div>
+                        <div class="pull-right">
+                            <div id="Body_dvPagerClosed">
+                                <div class="pagination">
+                                    <span id="Body_DataPager2"><a class="aspNetDisabled btn btn-small btn-primary"><<</a>&nbsp;<a class="aspNetDisabled btn btn-small btn-primary"><</a>&nbsp;<span class="btn btn-small btn-success">1</span>&nbsp;<a class="btn btn-small btn-primary" href="javascript:__doPostBack(&#39;ctl00$Body$DataPager2$ctl01$ctl01&#39;,&#39;&#39;)">2</a>&nbsp;<a class="btn btn-small btn-primary" href="javascript:__doPostBack(&#39;ctl00$Body$DataPager2$ctl01$ctl02&#39;,&#39;&#39;)">3</a>&nbsp;<a class="btn btn-small btn-primary" href="javascript:__doPostBack(&#39;ctl00$Body$DataPager2$ctl01$ctl03&#39;,&#39;&#39;)">4</a>&nbsp;<a class="btn btn-small btn-primary" href="javascript:__doPostBack(&#39;ctl00$Body$DataPager2$ctl01$ctl04&#39;,&#39;&#39;)">5</a>&nbsp;<a class="btn btn-small btn-primary" href="javascript:__doPostBack(&#39;ctl00$Body$DataPager2$ctl01$ctl05&#39;,&#39;&#39;)">6</a>&nbsp;<a class="btn btn-small btn-primary" href="javascript:__doPostBack(&#39;ctl00$Body$DataPager2$ctl01$ctl06&#39;,&#39;&#39;)">7</a>&nbsp;<a class="btn btn-small btn-primary" href="javascript:__doPostBack(&#39;ctl00$Body$DataPager2$ctl01$ctl07&#39;,&#39;&#39;)">8</a>&nbsp;<a class="btn btn-small btn-primary" href="javascript:__doPostBack(&#39;ctl00$Body$DataPager2$ctl01$ctl08&#39;,&#39;&#39;)">9</a>&nbsp;<a class="btn btn-small btn-primary" href="javascript:__doPostBack(&#39;ctl00$Body$DataPager2$ctl01$ctl09&#39;,&#39;&#39;)">10</a>&nbsp;&nbsp;<a href="javascript:__doPostBack(&#39;ctl00$Body$DataPager2$ctl01$ctl10&#39;,&#39;&#39;)">...</a>&nbsp;<a class="btn btn-small btn-primary" href="javascript:__doPostBack(&#39;ctl00$Body$DataPager2$ctl02$ctl00&#39;,&#39;&#39;)">></a>&nbsp;<a class="btn btn-small btn-primary" href="javascript:__doPostBack(&#39;ctl00$Body$DataPager2$ctl02$ctl01&#39;,&#39;&#39;)">>></a>&nbsp;</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--/.closed-auctions-->
+            </div>
+        </div>
+    </div>
+
+
+<script>
+
+    all_data = "{{product.count}}"
+
+    function convertTZ(date, tzString) {
+        return new Date((typeof date === "string" ? new Date(date) : date).toLocaleString("en-US", {timeZone: tzString}));   
+    }
+
+    setInterval(function(){
+        for(var j=1;j<=all_data*1;j++){
+            startid = "start_bid_" + j;
+            var bid_id = document.getElementById('myproid_'+j).value
+            var start = document.getElementById(startid).value;
+            convertTZ(start, "Asia/Kolkata")
+            var status = document.getElementById('pro_status_'+j).value;
+            mydate = new Date(start).getTime();
+            diftime = mydate - new Date().getTime();
+            var days = Math.floor(diftime / (1000*60*60*24));
+            var seconds =  Math.floor((diftime %  (1000*60)) / 1000) ;
+            var minutes =  Math.floor((diftime % (1000*60*60)) / (1000*60));
+            var hours   =  Math.floor((diftime % (1000*60*60*24)) / (1000*60*60));
+            if(status == "upcoming"){
+                document.getElementById('upcoming_time_'+j).innerHTML = "Start in "+days+"d,"+hours+":"+minutes+":"+seconds;
+                if(days <= 0 && hours <= 0 && minutes <= 0 && seconds <= 0 && status=="upcoming"){
+                    var xhttp;
+                    var bid_id = document.getElementById('myproid_'+j).value;
+                    xhttp = new XMLHttpRequest();
+                    xhttp.onreadystatechange = function() {
+                        if (this.readyState == 4 && this.status == 200) {
+                            data = JSON.parse(this.responseText);
+                            console.log(data);
+                            window.location = data.myurl;
+                        }
+                    };
+                    xhttp.open("GET", "/changeupcomingtolive/"+bid_id, true);
+                    xhttp.send();
+                }
+            }else if(status == "live"){
+                mydate = new Date(start).getTime() + (1000*60*60);
+                diftime = mydate - new Date().getTime();
+                var days = Math.floor(diftime / (1000*60*60*24));
+                var hours   =  Math.floor((diftime % (1000*60*60*24)) / (1000*60*60));
+                var minutes =  Math.floor((diftime % (1000*60*60)) / (1000*60));
+                var seconds =  Math.floor((diftime %  (1000*60)) / 1000);
+                document.getElementById('live_time_'+j).innerHTML = hours+":"+minutes+":"+seconds;
+                if(days <= 0 && hours <= 0 && minutes <= 0 && seconds <= 0 && status=="live"){
+                    var xhttp;    
+                    var bid_id = document.getElementById('myproid_'+j).value;
+                    xhttp = new XMLHttpRequest();
+                    xhttp.onreadystatechange = function() {
+                        if (this.readyState == 4 && this.status == 200) {
+                            data = JSON.parse(this.responseText);
+                            console.log(data);
+                            window.location = data.myurl;
+                        }
+                    };
+                    xhttp.open("GET", "/changelivetocomplete/"+bid_id, true);
+                    xhttp.send();
+                }
+            }
+            
+            
+        }
+    },1000);
+        
+</script>
+
+{% endblock %}

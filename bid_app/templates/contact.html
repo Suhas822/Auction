@@ -1,0 +1,104 @@
+{% extends 'index.html' %}
+{% load static %}
+{% block body %}
+
+            
+    <div class="boxed-layout container b-margin-bottom-30" style="padding: 0px;">
+        <div class="wrapper">
+            <!--=== Breadcrumbs ===-->
+            <div class="breadcrumbs">
+                        <div class="container heading heading-v1">
+                            <h3 style="text-transform: uppercase; font-size: 20px; margin-top: 5px; font-family: 'Trebuchet MS', Arial, sans-serif;">Contacts Us</h3>
+                        </div>
+                    </div>
+            <!--/breadcrumbs-->
+
+            <!--=== Content Part ===-->
+            <div class="container ">
+                <div class="row ">
+                    <div class="col-md-7 mb-margin-bottom-30">
+
+                        <div id="Body_Panel1" onkeypress="javascript:return WebForm_FireDefaultButton(event, &#39;Body_btnSubmit&#39;)">
+	
+                            <div class="form-horizontal">
+                                <div class="form-group">
+                                    <div class="col-md-8 col-md-offset-3 ">
+                                        
+                                        
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-md-3">Name <span class="color-red">*</span></label>
+                                    <div class="col-md-8">
+                                        <input name="ctl00$Body$txtName" type="text" id="Body_txtName" class="form-control" PlaceHolder="Name" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-md-3">Mobile <span class="color-red">*</span></label>
+                                    <div class="col-md-8">
+                                        <input name="ctl00$Body$txtMobile" type="text" maxlength="10" id="Body_txtMobile" class="form-control" PlaceHolder="Mobile" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-md-3">Email <span class="color-red">*</span></label>
+                                    <div class="col-md-8 ">
+                                        <input name="ctl00$Body$txtEmail" type="text" id="Body_txtEmail" class="form-control" PlaceHolder="Email" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-md-3">Subject <span class="color-red">*</span></label>
+                                    <div class="col-md-8">
+                                        <input name="ctl00$Body$txtSubject" type="text" id="Body_txtSubject" class="form-control" PlaceHolder="Subject" />
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="control-label col-md-3">Message <span class="color-red">*</span></label>
+                                    <div class="col-md-8">
+                                        <textarea name="ctl00$Body$txtMessage" rows="2" cols="20" id="Body_txtMessage" class="form-control" PlaceHolder="Message">
+</textarea>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div id="Body_pnlReCaptcha" class="col-md-8 col-md-offset-3">
+		
+                                    <span><div class='g-recaptcha' data-sitekey='6LfP_xETAAAAAOBC2hx2ywwtAAX9nU6ak-SozuS_'></div></span>
+	</div>
+                                </div>
+
+                                <div class="form-group">
+                                    <p class="col-md-8 col-md-offset-3">
+                                        <input type="submit" name="ctl00$Body$btnSubmit" value="Send Message" onclick="skm_LockScreen();" id="Body_btnSubmit" class="btn-u" />
+                                    </p>
+                                </div>
+                            </div>
+                        
+</div>
+
+                    </div>
+                    <div class="col-md-5">
+                        <!-- Contacts -->
+                        <div class="headline">
+                            <h4> OnlineAuction  </h4>
+                        </div>
+                        <ul class="list-unstyled who margin-bottom-30">
+                            <li><a href="#"><i class="fa fa-home"></i>INDIA </a></li>
+                            <li><a href="#"><i class="fa fa-envelope"></i><OnlineAuction class="com"></OnlineAuction></a></li>
+                            <li><a href="#"><i class="fa fa-phone"></i>+91-7262893749</a></li>
+                            <li><a href="#"><i class="fa fa-clock-o"></i>(Mon-Fri, 11:00am to 6:00pm)</a></li>
+                        </ul>
+
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    {% endblock %}
